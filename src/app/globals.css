@@ -3,26 +3,67 @@
 @tailwind utilities;
 
 :root {
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
+  --primary-purple: #9747FF;
+  --primary-pink: #FF6B8B;
+  --dark-bg: #1A1D21;
+  --dark-card: #22262A;
+  --dark-text: #FFFFFF;
+  --dark-text-secondary: #A1A1AA;
 }
 
 @layer base {
   body {
-    @apply antialiased text-gray-900;
+    @apply bg-[#1A1D21] text-white antialiased;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200;
+    @apply bg-gradient-to-r from-[#9747FF] via-[#9747FF] to-[#FF6B8B] text-white px-4 py-2 rounded-md hover:opacity-90 transition-opacity duration-200;
+    background-size: 200% auto;
+    animation: subtle-shift 5s ease infinite;
   }
   
   .btn-secondary {
-    @apply bg-white text-gray-700 px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-50 transition-colors duration-200;
+    @apply bg-[#22262A] text-white px-4 py-2 rounded-md border border-gray-700 hover:bg-[#2A2E32] transition-colors duration-200;
+  }
+
+  .card {
+    @apply bg-[#22262A] rounded-lg shadow-lg border border-gray-800;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#9747FF] to-[#FF6B8B] inline-block text-transparent bg-clip-text;
+  }
+
+  .gradient-border-card {
+    @apply relative rounded-lg p-[2px] bg-gradient-to-r from-[#9747FF] to-[#FF6B8B];
+  }
+
+  .gradient-border-card::before {
+    content: "";
+    @apply absolute inset-[1px] bg-[#22262A] rounded-[6px] z-0;
+  }
+
+  .gradient-border-card > div {
+    @apply relative z-10 p-4;
+  }
+
+  .upload-area {
+    @apply bg-[#22262A] rounded-lg border-2 border-dashed border-white/50 hover:border-white transition-colors duration-200;
+  }
+
+  .upload-area > div {
+    @apply p-8;
   }
 }
 
 .drag-active {
-  @apply border-blue-500 bg-blue-50;
+  @apply bg-opacity-10 bg-white;
+}
+
+@keyframes subtle-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

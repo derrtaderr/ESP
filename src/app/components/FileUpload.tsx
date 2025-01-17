@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 interface FileUploadProps {
@@ -9,39 +9,34 @@ interface FileUploadProps {
 }
 
 export default function FileUpload({ onFileSelect, isProcessing }: FileUploadProps) {
-  const [dragActive, setDragActive] = useState(false);
-
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    const file = acceptedFiles[0];
-    if (file && file.type === 'text/csv') {
-      onFileSelect(file);
+    if (acceptedFiles?.length > 0 && !isProcessing) {
+      onFileSelect(acceptedFiles[0]);
     }
-  }, [onFileSelect]);
+  }, [onFileSelect, isProcessing]);
 
-  const { getRootProps, getInputProps } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
       'text/csv': ['.csv']
     },
-    maxSize: 10 * 1024 * 1024, // 10MB
+    maxSize: 50 * 1024 * 1024, // 50MB
     multiple: false,
     disabled: isProcessing
   });
 
   return (
-    <div 
-      {...getRootProps()} 
-      className={`border-2 border-dashed border-gray-300 rounded-lg p-12 transition-colors
-        ${dragActive ? 'drag-active' : ''}
-        ${isProcessing ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:border-blue-500'}`}
+    <div
+      {...getRootProps()}
+      className="upload-area"
     >
-      <div className="text-center">
+      <div className={`flex flex-col items-center justify-center ${isDragActive ? 'drag-active' : ''}`}>
+        <input {...getInputProps()} />
         <svg
-          className="mx-auto h-12 w-12 text-gray-400"
+          className="w-12 h-12 text-gray-500 mb-4"
           fill="none"
-          viewBox="0 0 24 24"
           stroke="currentColor"
-          aria-hidden="true"
+          viewBox="0 0 24 24"
         >
           <path
             strokeLinecap="round"
@@ -50,14 +45,15 @@ export default function FileUpload({ onFileSelect, isProcessing }: FileUploadPro
             d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
           />
         </svg>
-        <div className="mt-4">
-          <input {...getInputProps()} />
-          <span className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500">
-            {isProcessing ? 'Processing...' : 'Upload a file'}
-          </span>
-          <p className="text-sm text-gray-500 mt-1">or drag and drop</p>
-        </div>
-        <p className="text-xs text-gray-500 mt-2">CSV up to 10MB (max 1000 email addresses)</p>
+        <button
+          type="button"
+          className="text-[#9747FF] font-medium mb-2"
+          disabled={isProcessing}
+        >
+          {isProcessing ? 'Processing...' : 'Upload a file'}
+        </button>
+        <p className="text-gray-400 text-sm">or drag and drop</p>
+        <p className="text-gray-500 text-xs mt-2">CSV up to 50MB</p>
       </div>
     </div>
   );
