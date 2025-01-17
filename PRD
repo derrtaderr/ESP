@@ -1,0 +1,122 @@
+ESP Domain Analyzer: Micro SaaS PRD
+1. Problem
+Email marketers and sales professionals often struggle with optimizing their outreach campaigns due to a lack of information about their leads' email service providers (ESPs). This results in lower deliverability rates, reduced open rates, and ultimately, less effective email campaigns. There is a need for a simple, efficient tool that can quickly analyze a large number of email addresses (up to 1000 leads per upload) and categorize them by their ESP, specifically focusing on Microsoft and Google domains.
+
+2. High Level Approach
+We will develop a web-based micro SaaS application that allows users to upload a list of email addresses (up to 1000 leads) and automatically categorizes them based on their email service provider, focusing primarily on identifying Microsoft and Google domains. The tool will provide instant results, enabling users to segment their email lists effectively for improved targeting and deliverability.
+
+[NEW/UPDATED]
+An additional requirement is to add a new column in the analyzed CSV output. For each email address, the tool will add a column that indicates the ESP category (e.g., "Google," "Microsoft," or "Other").
+
+3. Narrative
+Sarah, a marketing manager at a B2B SaaS company, has a list of 1000 potential leads she wants to reach out to via email. She knows that tailoring her approach based on the recipient's email service provider can significantly improve her campaign's success rate. Sarah visits the ESP Domain Analyzer website, uploads her CSV file containing the email addresses, and within seconds receives:
+
+A breakdown of which emails are associated with Microsoft domains
+Which emails are Google domains
+Which belong to other providers
+[NEW/UPDATED] A new column in her uploaded file that specifies the identified ESP next to each email address.
+With this information, Sarah can now customize her email content and sending strategy for each segment, leading to higher open rates and more effective communication with her prospects.
+
+4. Goals
+4.1 Metrics
+Achieve 1000 registered users within the first 3 months of launch
+Process 1 million email addresses within the first month of operation
+Maintain a 99.9% uptime for the service
+Achieve a user satisfaction rating of 4.5/5 or higher
+Convert 10% of free trial users to paid subscribers within the first 6 months
+4.2 Impact Sizing Model
+Assuming an average of 500 email addresses analyzed per user per month:
+
+1000 users * 500 emails = 500,000 emails processed monthly
+If 20% of these emails lead to improved targeting, resulting in a 5% increase in conversion rates:
+100,000 better-targeted emails * 5% improvement = 5,000 additional conversions
+Estimating an average deal size of $100:
+5,000 additional conversions * $100 = $500,000 potential additional revenue for our users monthly
+5. Non-goals
+Providing detailed information about ESPs beyond Microsoft and Google
+Offering email validation or verification services
+Integrating directly with email marketing platforms
+Providing email content suggestions or templates
+Analyzing email addresses in real-time as they are typed
+6. Solution Alignment
+The ESP Domain Analyzer aligns with our company's mission to empower marketers and sales professionals with data-driven tools for more effective communication. By focusing on a specific, high-impact feature (ESP identification), we can deliver immediate value to our users while laying the groundwork for potential future expansions of our service offerings.
+
+7. Key Features
+7.1 Plan of record
+User registration and authentication system
+CSV file upload functionality (supporting files up to 10MB and up to 1000 leads at a time)
+Email domain analysis engine focusing on Microsoft and Google domains
+Results dashboard showing breakdown of ESPs
+[NEW/UPDATED] Export functionality for analyzed results with an additional ESP column in the CSV
+User account management and usage tracking
+7.2 Future considerations
+API access for integration with other tools
+Expanded ESP identification beyond Microsoft and Google
+Batch processing for files larger than 1000 email addresses
+Email list segmentation tools based on ESP analysis
+Integration with popular CRM and email marketing platforms
+8. Key Flows
+User Registration:
+
+User visits website
+Clicks "Sign Up"
+Enters email and password
+Verifies email address
+Completes profile information
+Email Analysis:
+
+User logs in
+Clicks "Upload CSV"
+Selects file from their computer (up to 1000 email addresses)
+Confirms upload
+System processes file
+Results displayed on dashboard
+Exporting Results:
+
+User views results on dashboard
+Clicks "Export Results"
+[NEW/UPDATED] The output CSV includes a new column that flags each email’s ESP (e.g., Google, Microsoft, Other)
+Chooses export format (CSV, Excel, PDF)
+File is generated and downloaded
+9. Key Logic
+Domain Identification:
+
+Parse email address to extract domain
+Check domain against database of known Microsoft domains (outlook.com, hotmail.com, live.com, etc.)
+Check domain against database of known Google domains (gmail.com, googlemail.com)
+Categorize as "Other" if not matching Microsoft or Google
+File Processing:
+
+Validate CSV format
+Read email addresses line by line (up to 1000 leads at a time)
+Apply domain identification logic to each email
+[NEW/UPDATED] Create a new column ("ESP") for each row in the CSV that stores the identified ESP
+Aggregate results for the dashboard display
+Store results in the user's account
+Usage Tracking:
+
+Count number of email addresses processed
+Update user's usage statistics
+Check against user's plan limits
+10. Launch Plan
+Phase 1 (Weeks 1-4):
+
+Develop core functionality
+Set up user authentication system
+Create basic UI
+Phase 2 (Weeks 5-6):
+
+Internal testing and bug fixing
+Security audit
+Performance optimization
+Phase 3 (Weeks 7-8):
+
+Beta testing with select users
+Gather and incorporate feedback
+Finalize UI/UX
+Phase 4 (Week 9):
+
+Marketing preparation
+Documentation completion
+Phase 5 (Week 10):
+
