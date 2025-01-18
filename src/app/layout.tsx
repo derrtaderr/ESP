@@ -1,26 +1,25 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "ESP Domain Analyzer",
-  description: "Analyze and categorize email service providers for your email lists",
+  description: "Analyze email service providers from your CSV files",
 };
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <main className="min-h-screen bg-gray-50">
-          {children}
-        </main>
-      </body>
+    <html lang="en" className={openSans.className}>
+      <body>{children}</body>
     </html>
   );
 }

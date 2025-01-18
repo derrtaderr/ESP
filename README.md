@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ESP Domain Analyzer
+
+A modern web application that analyzes email lists to identify and categorize email service providers (ESPs). Built with Next.js and TypeScript, featuring a clean, dark-themed UI.
+
+## Features
+
+- **CSV File Analysis**: Upload CSV files containing email addresses (up to 50MB)
+- **ESP Detection**: Identifies major email service providers including:
+  - Google Workspace
+  - Microsoft 365
+  - Yahoo
+  - ProtonMail
+  - Zoho
+  - AOL
+- **MX Record Analysis**: Uses DNS MX record lookups for accurate provider detection
+- **Results Summary**: Visual breakdown of email providers in your list
+- **Enhanced CSV**: Downloads your original CSV with an added "ESP Provider" column
+
+## Technology Stack
+
+- **Frontend**: Next.js 14, React, TypeScript
+- **Styling**: Tailwind CSS
+- **DNS Lookups**: Node.js DNS module
+- **File Processing**: Server-side CSV parsing and analysis
 
 ## Getting Started
 
-First, run the development server:
-
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/derrtaderr/ESP.git
+cd ESP/esp-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+1. Upload a CSV file containing email addresses
+2. Wait for the analysis to complete
+3. View the breakdown of email service providers
+4. Download the enhanced CSV with ESP information
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Development
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Built with Next.js 14 App Router
+- Uses server-side actions for file processing
+- Implements modern React patterns and TypeScript
+- Features a responsive, accessible UI
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT License - feel free to use and modify as needed.

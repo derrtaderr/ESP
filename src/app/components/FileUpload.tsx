@@ -47,7 +47,7 @@ export default function FileUpload({ onFileSelect, isProcessing }: FileUploadPro
         </svg>
         <button
           type="button"
-          className="text-[#9747FF] font-medium mb-2"
+          className="text-white font-medium mb-2"
           disabled={isProcessing}
         >
           {isProcessing ? 'Processing...' : 'Upload a file'}
